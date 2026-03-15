@@ -1,0 +1,25 @@
+---
+title: "ENVS193DS-code"
+format: html
+editor: visual
+author: "Valentina Caro"
+date: "03-13-2026"
+execute: 
+  message: false
+  warning: false
+---
+
+## Setup
+
+```{r}
+#| message: false
+
+library(tidyverse)
+library(janitor)
+library(here)
+library(readxl)
+library(scales)
+library(ggeffects)
+library(MuMIn)
+
+```
