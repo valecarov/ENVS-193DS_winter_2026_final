@@ -73,6 +73,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="193ds-code_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="193ds-code_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -122,8 +151,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeffects)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lterdatasampler)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>HTML Link: <a href="https://valecarov.github.io/ENVS-193DS_winter_2026_final/code/193ds-code.html" class="uri">https://valecarov.github.io/ENVS-193DS_winter_2026_final/code/193ds-code.html</a></p>
+</section>
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<section id="a-transparent-statistical-methods" class="level2">
+<h2 class="anchored" data-anchor-id="a-transparent-statistical-methods">a) Transparent Statistical Methods</h2>
+<p>In part 1, my coworkers used a linear regression to test whether precipitation predicts flooded wetland area. In part 2, my coworkers used a Kruskal-Wallis test to determine whether the median flooded wetland area differs across 5 water year classifications.</p>
+</section>
+<section id="b-figure-needed" class="level2">
+<h2 class="anchored" data-anchor-id="b-figure-needed">b) Figure Needed</h2>
+<p>An appropriate figure to accompany part 2 of the report would be a box and jitter plot to show the median and overall spread across the water year classifications. The x-axis/group should be water year classification (wet, above normal, below normal, dry, and critical drought), and the y axis should be flooded wetland area in m^2. Each classification should have its own custom color to ensure data is clearly displayed.</p>
+</section>
+<section id="c-suggestions-for-rewriting" class="level2">
+<h2 class="anchored" data-anchor-id="c-suggestions-for-rewriting">c) Suggestions for Rewriting</h2>
+<p>Based on our model predictions, we found that precipitation does not predict flooded wetland area (m^2)(Linear Regression, F(1, df) = f-statisic, R<sup>2</sup> = R^2 value, p = 0.11, <span class="math inline">\(\alpha\)</span> = significance level). We did not find a difference ( <span class="math inline">\(\eta^2\)</span> = effect size) in median flooded wetland area (m<sup>2)</sup> between water year classifications (wet, above normal, below normal, cry, critical drought) (Kruskal-Wallis test, <span class="math inline">\(\chi^2\)</span> (df) = H-statistic, p = 0.12, <span class="math inline">\(\alpha\)</span> = significance level).</p>
+</section>
 </section>
 
 </main>

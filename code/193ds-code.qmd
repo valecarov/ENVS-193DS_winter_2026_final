@@ -22,7 +22,22 @@ library(readxl)
 library(scales)
 library(ggeffects)
 library(MuMIn)
+library(lterdatasampler)
 
 ```
 
 HTML Link: <https://valecarov.github.io/ENVS-193DS_winter_2026_final/code/193ds-code.html>
+
+# Problem 1
+
+## a) Transparent Statistical Methods
+
+In part 1, my coworkers used a linear regression to test whether precipitation predicts flooded wetland area. In part 2, my coworkers used a Kruskal-Wallis test to determine whether the median flooded wetland area differs across 5 water year classifications.
+
+## b) Figure Needed
+
+An appropriate figure to accompany part 2 of the report would be a box and jitter plot to show the median and overall spread across the water year classifications. The x-axis/group should be water year classification (wet, above normal, below normal, dry, and critical drought), and the y axis should be flooded wetland area in m\^2. Each classification should have its own custom color to ensure data is clearly displayed.
+
+## c) Suggestions for Rewriting
+
+Based on our model predictions, we found that precipitation does not predict flooded wetland area (m\^2)(Linear Regression, F(1, df) = f-statisic, R^2^ = R\^2 value, p = 0.11, $\alpha$ = significance level). We did not find a difference ( $\eta^2$ = effect size) in median flooded wetland area (m^2)^ between water year classifications (wet, above normal, below normal, cry, critical drought) (Kruskal-Wallis test, $\chi^2$ (df) = H-statistic, p = 0.12, $\alpha$ = significance level).
