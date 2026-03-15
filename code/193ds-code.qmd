@@ -12,6 +12,7 @@ execute:
 ## Setup
 
 ```{r}
+#| label: reading in packages
 #| message: false
 
 library(tidyverse)
@@ -23,3 +24,5 @@ library(ggeffects)
 library(MuMIn)
 
 ```
+
+HTML Link: <https://valecarov.github.io/ENVS-193DS_winter_2026_final/code/193ds-code.html>
