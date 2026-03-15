@@ -41,3 +41,7 @@ An appropriate figure to accompany part 2 of the report would be a box and jitte
 ## c) Suggestions for Rewriting
 
 Based on our model predictions, we found that precipitation does not predict flooded wetland area (m\^2)(Linear Regression, F(1, df) = f-statisic, R^2^ = R\^2 value, p = 0.11, $\alpha$ = significance level). We did not find a difference ( $\eta^2$ = effect size) in median flooded wetland area (m^2)^ between water year classifications (wet, above normal, below normal, cry, critical drought) (Kruskal-Wallis test, $\chi^2$ (df) = H-statistic, p = 0.12, $\alpha$ = significance level).
+
+## d) Interpretation
+
+One additional variable that could impact the flooded wetland area of the San Joaquin River Delta is the river discharge. This could be tested by plotting the flooded wetland area in meters\^2 versus the river discharge in cumecs. River discharge is a continuous variable that is likely to influence flooded wetland area because rivers are the primary source of water for a wetland surrounding a river delta. High discharge causes overflow into the surrounding wetlands, while low discharge decreases water levels.
