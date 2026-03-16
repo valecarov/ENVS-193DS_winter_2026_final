@@ -188,7 +188,6 @@ mopl_clean <- mopl |> # create new dataframe
 
 ```{r}
 #| label: run models
-#| include: false
 
 # model 0: null model
 model0 <- lm(used_bin ~ 1,
@@ -204,3 +203,18 @@ model3 <- lm(used_bin ~ edgedist,
              data = mopl_clean)
 
 ```
+
+## e) Select the best model
+
+```{r}
+#| label: aic
+
+AICc(model0,
+     model1,
+     model2,
+     model3) |> 
+  arrange(AICc)
+
+```
+
+The best model as determined by Akaike’s Information Criterion (AIC) is the model that only includes visual obstruction as the predictor of site usage.
