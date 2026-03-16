@@ -204,7 +204,7 @@ model3 <- lm(used_bin ~ edgedist,
 
 ```
 
-## e) Select the best model
+## e) Select the Best Model
 
 ```{r}
 #| label: aic
@@ -218,3 +218,13 @@ AICc(model0,
 ```
 
 The best model as determined by Akaike’s Information Criterion (AIC) is the model that only includes visual obstruction as the predictor of site usage.
+
+## f) Check the Diagnostics
+
+```{r}
+#| label: residuals for model 2
+
+par(mfrow = c(2,2))
+plot(model2)
+
+```
