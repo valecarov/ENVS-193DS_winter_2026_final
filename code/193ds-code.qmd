@@ -131,3 +131,7 @@ ggplot(data = kelp_clean,# use kelp_clean data frame
                             size = 16)) 
   
 ```
+
+## d) Interpretation
+
+The site with the most variability in mean kelp fronds per year was the Naples site, with values as low as about 4 fronds up to nearly 40 fronds, visualized by the huge spikes in the graph above. The Carpinteria site had the least variability in mean kelp fronds per year, ranging from about 3 fronds to 17 fronds as seen by the much smaller spikes.
