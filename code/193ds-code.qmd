@@ -23,6 +23,8 @@ library(scales) # modifying axis labels
 library(ggeffects) # model predictions
 library(MuMIn) # model selection
 library(lterdatasampler) # dataset from LTER
+library(extrafont) # adds more fonts
+library(showtext) # allow changing font
 
 kelp <- read.csv(
   here("data",
@@ -94,3 +96,38 @@ slice_sample(kelp_clean,
 ## b) Understanding the Data
 
 Data from 09-22-2000 in transect 6 in quad 40 was excluded from kelp_clean due to a missing data sheet causing invalid values for the number of fronds and the diameter of the holdfast. The number and size (number of fronds and diameter of the holdfast) of kelp in this line of the table are both -99999. (Abstract section under Summary tab of data page)
+
+## c) Visualizing the Data
+
+```{r}
+#| label: add font
+
+font_add(family = "Times New Roman", regular = "times.ttf") # adds Times New Roman font
+showtext_auto() # allows font to be used 
+
+```
+
+```{r}
+#| label: line graph
+
+ggplot(data = kelp_clean,# use kelp_clean data frame
+       aes(x = year, # set x and y axis
+           y = mean_fronds,
+           color = site_name)) +
+  geom_line() + # adding line graph
+  geom_point() + # adding points
+  labs(title= "Sites vary in mean kelp fronds per year", # setting titles
+       x = "Year",
+       y = "Mean kelp fronds per year",
+       color = "Site") +
+  scale_color_manual(values = c( # set custom colors
+    "Naples" = "darksalmon",
+    "Isla Vista" = "palevioletred",
+    "Carpinteria" = "deeppink4"
+  )) +
+  theme_minimal() + # change theme 
+  theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
+  theme(text = element_text(family = "Times New Roman", # change font and size
+                            size = 16)) 
+  
+```
