@@ -15,14 +15,19 @@ execute:
 #| label: reading in packages
 #| message: false
 
-library(tidyverse)
-library(janitor)
-library(here)
-library(readxl)
-library(scales)
-library(ggeffects)
-library(MuMIn)
-library(lterdatasampler)
+library(tidyverse) # general use
+library(janitor) # cleaning data frames
+library(here) # organization
+library(readxl) # reading excel
+library(scales) # modifying axis labels
+library(ggeffects) # model predictions
+library(MuMIn) # model selection
+library(lterdatasampler) # dataset from LTER
+
+kelp <- read.csv(
+  here("data",
+       "Annual_Kelp_All_Years_20250903.csv")
+) # creating kelp dataframe
 
 ```
 
@@ -44,4 +49,44 @@ Based on our model predictions, we found that precipitation does not predict flo
 
 ## d) Interpretation
 
-One additional variable that could impact the flooded wetland area of the San Joaquin River Delta is the river discharge. This could be tested by plotting the flooded wetland area in meters\^2 versus the river discharge in cumecs. River discharge is a continuous variable that is likely to influence flooded wetland area because rivers are the primary source of water for a wetland surrounding a river delta. High discharge causes overflow into the surrounding wetlands, while low discharge decreases water levels.
+One additional variable that could impact the flooded wetland area of the San Joaquin River Delta is water management. As there is not sufficient evidence of precipitation having an effect on flooded wetland area in this study, it is likely that the management of the water is a stronger predictor than the amount of water itself. This could be tested by measuring the flooded wetland area under different water management strategies to determine which strategies may increase flooded wetland area, maximizing waterfowl breeding success.
+
+# Problem 2
+
+## a) Cleaning and Summarizing
+
+```{r}
+#| label: cleaning & summarizing
+
+kelp_clean <- kelp |> 
+  clean_names() |> # clean the names
+  filter(site %in% c("IVEE", "NAPL", "CARP")) |> # filter for sites IVEE, NAPL, & CARP
+  filter(!(date == "2000-09-22" & transect == "6" & quad == "40")) |> # exclude specific date, transect, and quad values
+  mutate(site_name = case_when( # create column for site names from site, using full name rather than abbreviation
+  site == "NAPL" ~ "Naples",
+  site == "IVEE" ~ "Isla Vista",
+  site == "CARP" ~ "Carpinteria"
+)) |> 
+  mutate(site_name = as_factor(site_name),
+       site_name = fct_relevel(site_name,
+                               "Naples", "Isla Vista", "Carpinteria")) |> # make site name a factor and set order
+  group_by(site_name, year) |> # group by site name and year
+  summarize(mean_fronds = mean(fronds)) |> # calculate the mean frond size
+  ungroup() # undo group_by function
+
+```
+
+```{r}
+#| label: check structure
+
+str(kelp_clean) # check structure of the data frame
+
+```
+
+```{r}
+#| label: display
+
+slice_sample(kelp_clean,
+             n = 5) # display 5 random rows from data frame
+
+```
