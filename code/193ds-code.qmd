@@ -144,3 +144,17 @@ The site with the most variability in mean kelp fronds per year was the Naples s
 # Problem 3
 
 ## a) Response Variable
+
+In this dataset, the 0s and 1s in the binshrub and binsubshrub columns indicate whether there is shrub or sub-shrub cover in a nest-site. A 0 indicates no shrub or sub-shrub cover and a 1 indicates there is shrub or sub-shrub cover in the nest-site.
+
+## b) Purpose of Study
+
+### Visual Obstruction:
+
+Visual obstruction is a continuous variable measured at the nest, and at 5 m and 10 m from the nest. As visual obstruction increases, the probability of Mountain Plover nest site use would decrease because mountain plovers have a positive response to sites with a higher percentage of bare ground (the least visual obstruction) and a negative response to increasing maximum vegetation height, and presence of shrub cover and cactus cover (higher visual obstruction) according to the nest-selection subsection under the results section.
+
+### Distance to Prairie Dog Colony Edge:
+
+Distance to prairie dog colony edge is a continuous variable. As distance to the colony edge increases, the probability of a Mountain Plover nest site would decrease. According to the 2nd and 3rd paragraphs in the Discussion section of the paper, this may be due to complementary resources outside of the colony. It may be easier for adult plovers to travel with chicks if they are closer to the edge of the colony rather than at the center. Additionally, mountain plover density was highest in colonies that were 100-500 ha in size and low in larger colonies according to Figure 2 in the Results section, which could be related to distance from the edge as plovers would have to travel much further distances in very large colonies. I believe mountain plovers prefer nest sites that offer protection while still allowing for easy travel to outside resources, causing density to be the highest near the edges of moderately sized colonies.
+
+## c)
