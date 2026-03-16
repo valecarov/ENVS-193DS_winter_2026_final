@@ -90,3 +90,7 @@ slice_sample(kelp_clean,
              n = 5) # display 5 random rows from data frame
 
 ```
+
+## b) Understanding the Data
+
+Data from 09-22-2000 in transect 6 in quad 40 was excluded from kelp_clean due to a missing data sheet causing invalid values for the number of fronds and the diameter of the holdfast. The number and size (number of fronds and diameter of the holdfast) of kelp in this line of the table are both -99999. (Abstract section under Summary tab of data page)
