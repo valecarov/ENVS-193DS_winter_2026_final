@@ -176,19 +176,31 @@ Distance to prairie dog colony edge is a continuous variable. As distance to the
 ```{r}
 #| label: cleaning
 
-mopl_clean <- mopl |> 
-  clean_names() |> 
-  mutate( used_bin = case_when(
+mopl_clean <- mopl |> # create new dataframe
+  clean_names() |> # clean names
+  mutate( used_bin = case_when( # create new column used_bin from id column
     id == "used" ~ "1",
     id == "available" ~ "0"
   )) |> 
-  select(used_bin, edgedist, vo_nest)
+  select(used_bin, edgedist, vo_nest) # select variables
 
 ```
 
 ```{r}
 #| label: run models
+#| include: false
 
-
+# model 0: null model
+model0 <- lm(used_bin ~ 1,
+             data = mopl_clean)
+# model 1: all predictors
+model1 <- lm(used_bin ~ vo_nest + edgedist,
+             data = mopl_clean)
+# model 2: visual obstruction
+model2 <- lm(used_bin ~ vo_nest,
+             data = mopl_clean)
+# model 3: distance to edge of colony
+model3 <- lm(used_bin ~ edgedist,
+             data = mopl_clean)
 
 ```
