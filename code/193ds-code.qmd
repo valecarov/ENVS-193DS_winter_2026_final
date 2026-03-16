@@ -172,3 +172,23 @@ Distance to prairie dog colony edge is a continuous variable. As distance to the
 \|:--------3--------:\|:---------------------:\|:----------------x-----------------:\|:-----edgedist-----:\|
 
 ## d) Run the Models
+
+```{r}
+#| label: cleaning
+
+mopl_clean <- mopl |> 
+  clean_names() |> 
+  mutate( used_bin = case_when(
+    id == "used" ~ "1",
+    id == "available" ~ "0"
+  )) |> 
+  select(used_bin, edgedist, vo_nest)
+
+```
+
+```{r}
+#| label: run models
+
+
+
+```

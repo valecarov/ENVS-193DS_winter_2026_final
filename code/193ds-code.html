@@ -224,11 +224,11 @@ window.Quarto = {
 <pre><code># A tibble: 5 × 3
   site_name    year mean_fronds
   &lt;fct&gt;       &lt;int&gt;       &lt;dbl&gt;
-1 Carpinteria  2017       13.4 
-2 Isla Vista   2011        9.63
-3 Isla Vista   2003        6.14
-4 Naples       2025        8.44
-5 Isla Vista   2023        3.78</code></pre>
+1 Carpinteria  2005        6.24
+2 Carpinteria  2009        9.43
+3 Isla Vista   2010        4.78
+4 Carpinteria  2020        3.56
+5 Naples       2006        5.11</code></pre>
 </div>
 </div>
 </section>
@@ -304,6 +304,15 @@ window.Quarto = {
 </section>
 <section id="d-run-the-models" class="level2">
 <h2 class="anchored" data-anchor-id="d-run-the-models">d) Run the Models</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mopl_clean <span class="ot">&lt;-</span> mopl <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">used_bin =</span> <span class="fu">case_when</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    id <span class="sc">==</span> <span class="st">"used"</span> <span class="sc">~</span> <span class="st">"1"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    id <span class="sc">==</span> <span class="st">"available"</span> <span class="sc">~</span> <span class="st">"0"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(used_bin, edgedist, vo_nest)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 </section>
 
