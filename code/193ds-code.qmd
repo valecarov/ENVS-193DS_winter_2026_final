@@ -31,6 +31,11 @@ kelp <- read.csv(
        "Annual_Kelp_All_Years_20250903.csv")
 ) # creating kelp dataframe
 
+mopl <- read.csv(
+  here("data",
+       "MOPL_nest-site_selection_Duchardt_et_al._2019.csv")
+)
+
 ```
 
 HTML Link: <https://valecarov.github.io/ENVS-193DS_winter_2026_final/code/193ds-code.html>
@@ -135,3 +140,7 @@ ggplot(data = kelp_clean,# use kelp_clean data frame
 ## d) Interpretation
 
 The site with the most variability in mean kelp fronds per year was the Naples site, with values as low as about 4 fronds up to nearly 40 fronds, visualized by the huge spikes in the graph above. The Carpinteria site had the least variability in mean kelp fronds per year, ranging from about 3 fronds to 17 fronds as seen by the much smaller spikes.
+
+# Problem 3
+
+## a) Response Variable
