@@ -222,13 +222,13 @@ window.Quarto = {
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">n =</span> <span class="dv">5</span>) <span class="co"># display 5 random rows from data frame</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
-  site_name    year mean_fronds
-  &lt;fct&gt;       &lt;int&gt;       &lt;dbl&gt;
-1 Isla Vista   2016      7.74  
-2 Naples       2001      0.0606
-3 Naples       2008      6.62  
-4 Carpinteria  2021      6.13  
-5 Naples       2003      9.26  </code></pre>
+  site_name   year mean_fronds
+  &lt;fct&gt;      &lt;int&gt;       &lt;dbl&gt;
+1 Isla Vista  2022       38.3 
+2 Isla Vista  2014       19.9 
+3 Naples      2013        9.20
+4 Naples      2015       10.6 
+5 Naples      2023        4.87</code></pre>
 </div>
 </div>
 </section>
@@ -293,8 +293,16 @@ window.Quarto = {
 <p>Distance to prairie dog colony edge is a continuous variable. As distance to the colony edge increases, the probability of a Mountain Plover nest site would decrease. According to the 2nd and 3rd paragraphs in the Discussion section of the paper, this may be due to complementary resources outside of the colony. It may be easier for adult plovers to travel with chicks if they are closer to the edge of the colony rather than at the center. Additionally, mountain plover density was highest in colonies that were 100-500 ha in size and low in larger colonies according to Figure 2 in the Results section, which could be related to distance from the edge as plovers would have to travel much further distances in very large colonies. I believe mountain plovers prefer nest sites that offer protection while still allowing for easy travel to outside resources, causing density to be the highest near the edges of moderately sized colonies.</p>
 </section>
 </section>
-<section id="c" class="level2">
-<h2 class="anchored" data-anchor-id="c">c)</h2>
+<section id="c-table-of-models" class="level2">
+<h2 class="anchored" data-anchor-id="c-table-of-models">c) Table of Models</h2>
+<p>| Model Number | Visual Obstruction | Distance to Prairie Dog Colony | Model Description |</p>
+<p>| 0 | | | null |</p>
+<p>| 1 | x | x | all |</p>
+<p>| 2 | x | | vo |</p>
+<p>| 3 | | x | edgedist |</p>
+</section>
+<section id="d-run-the-models" class="level2">
+<h2 class="anchored" data-anchor-id="d-run-the-models">d) Run the Models</h2>
 </section>
 </section>
 

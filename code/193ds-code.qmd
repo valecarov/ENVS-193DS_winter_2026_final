@@ -157,4 +157,16 @@ Visual obstruction is a continuous variable measured at the nest, and at 5 m and
 
 Distance to prairie dog colony edge is a continuous variable. As distance to the colony edge increases, the probability of a Mountain Plover nest site would decrease. According to the 2nd and 3rd paragraphs in the Discussion section of the paper, this may be due to complementary resources outside of the colony. It may be easier for adult plovers to travel with chicks if they are closer to the edge of the colony rather than at the center. Additionally, mountain plover density was highest in colonies that were 100-500 ha in size and low in larger colonies according to Figure 2 in the Results section, which could be related to distance from the edge as plovers would have to travel much further distances in very large colonies. I believe mountain plovers prefer nest sites that offer protection while still allowing for easy travel to outside resources, causing density to be the highest near the edges of moderately sized colonies.
 
-## c)
+## c) Table of Models
+
+\| Model Number \| Visual Obstruction \| Distance to Prairie Dog Colony \| Model Description \|
+
+\| 0 \| \| \| null \|
+
+\| 1 \| x \| x \| all \|
+
+\| 2 \| x \| \| vo \|
+
+\| 3 \| \| x \| edgedist \|
+
+## d) Run the Models
