@@ -55,11 +55,11 @@ In part 1, my coworkers used a linear regression to test whether precipitation p
 
 ## b) Figure Needed
 
-An appropriate figure to accompany part 2 of the report would be a box and jitter plot to show the median and overall spread across the water year classifications. The x-axis/group should be water year classification (wet, above normal, below normal, dry, and critical drought), and the y axis should be flooded wetland area in m\^2. Each classification should have its own custom color to ensure data is clearly displayed.
+An appropriate figure to accompany part 2 of the report would be a box and jitter plot to show the median and overall spread across the water year classifications. The x-axis/group should be water year classification (wet, above normal, below normal, dry, and critical drought), and the y axis should be flooded wetland area in $m^2$. Each classification should have its own custom color to ensure data is clearly displayed.
 
 ## c) Suggestions for Rewriting
 
-Based on our model predictions, we found that precipitation does not predict flooded wetland area (m\^2)(Linear Regression, F(1, df) = f-statisic, R^2^ = R\^2 value, p = 0.11, $\alpha$ = significance level). We did not find a difference ( $\eta^2$ = effect size) in median flooded wetland area (m^2)^ between water year classifications (wet, above normal, below normal, cry, critical drought) (Kruskal-Wallis test, $\chi^2$ (df) = H-statistic, p = 0.12, $\alpha$ = significance level).
+Based on our model predictions, we found that precipitation does not predict flooded wetland area ($m^2$)(Linear Regression, F(1, df) = f-statisic, $R^2$ = $R^2$ value, p = 0.11, $\alpha$ = significance level). We did not find a difference ( $\eta^2$ = effect size) in median flooded wetland area (m^2)^ between water year classifications (wet, above normal, below normal, cry, critical drought) (Kruskal-Wallis test, $\chi^2$ (df) = H-statistic, p = 0.12, $\alpha$ = significance level).
 
 ## d) Interpretation
 
@@ -160,11 +160,11 @@ In this dataset, the 0s and 1s in the binshrub and binsubshrub columns indicate 
 
 ### Visual Obstruction:
 
-Visual obstruction is a continuous variable measured at the nest, and at 5 m and 10 m from the nest. As visual obstruction increases, the probability of Mountain Plover nest site use would decrease because mountain plovers have a positive response to sites with a higher percentage of bare ground (the least visual obstruction) and a negative response to increasing maximum vegetation height, and presence of shrub cover and cactus cover (higher visual obstruction) according to the nest-selection subsection under the results section.
+Visual obstruction is a continuous variable index (based on vegetation height and cover) measured at the nest, and at 5 m and 10 m from the nest. As visual obstruction increases, the probability of Mountain Plover nest site use would decrease because mountain plovers have a positive response to sites with a higher percentage of bare ground (the least visual obstruction) and a negative response to increasing maximum vegetation height, and presence of shrub cover and cactus cover (higher visual obstruction) according to the nest-selection subsection under the results section.
 
 ### Distance to Prairie Dog Colony Edge:
 
-Distance to prairie dog colony edge is a continuous variable. As distance to the colony edge increases, the probability of a Mountain Plover nest site would decrease. According to the 2nd and 3rd paragraphs in the Discussion section of the paper, this may be due to complementary resources outside of the colony. It may be easier for adult plovers to travel with chicks if they are closer to the edge of the colony rather than at the center. Additionally, mountain plover density was highest in colonies that were 100-500 ha in size and low in larger colonies according to Figure 2 in the Results section, which could be related to distance from the edge as plovers would have to travel much further distances in very large colonies. I believe mountain plovers prefer nest sites that offer protection while still allowing for easy travel to outside resources, causing density to be the highest near the edges of moderately sized colonies.
+Distance to prairie dog colony edge (m) is a continuous variable. As distance to the colony edge increases, the probability of a Mountain Plover nest site would decrease. According to the 2nd and 3rd paragraphs in the Discussion section of the paper, this may be due to complementary resources outside of the colony. It may be easier for adult plovers to travel with chicks if they are closer to the edge of the colony rather than at the center. Additionally, mountain plover density was highest in colonies that were 100-500 ha in size and low in larger colonies according to Figure 2 in the Results section, which could be related to distance from the edge as plovers would have to travel much further distances in very large colonies. I believe mountain plovers prefer nest sites that offer protection while still allowing for easy travel to outside resources, causing density to be the highest near the edges of moderately sized colonies.
 
 ## c) Table of Models
 
@@ -315,7 +315,7 @@ ft
 
 ```
 
-According to the model, the predicted probability of Mountain Plover nest site occupancy at 0 on the index of visual obstruction is 0.66
+According to the model, the predicted probability of Mountain Plover nest site occupancy at 0 on the index of visual obstruction is 0.66.
 
 ## j) Interpret Results
 
