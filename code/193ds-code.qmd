@@ -139,8 +139,10 @@ ggplot(data = kelp_clean,# use kelp_clean data frame
   )) +
   theme_minimal() + # change theme 
   theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
-  theme(text = element_text(family = "Times New Roman", # change font and size
-                            size = 16)) 
+  theme(text = element_text(family = "Times New Roman", # change font, color, and size
+                            color = "#1D0200",
+                            size = 16)) +
+  theme(axis.text = element_text(color = "#1D0200")) # change axis color to match text color
   
 ```
 
@@ -285,7 +287,9 @@ ggplot(data = preds, # set up using predictions data frame
   theme_classic() + # change theme 
   theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
   theme(text = element_text(family = "Times New Roman",
-                            size = 16)) # change font and size
+                            color = "#1D0200",
+                            size = 16)) + # change font, color,and size
+  theme(axis.text = element_text(color = "#1D0200")) # match axis color to text color
 
 ```
 
@@ -336,7 +340,8 @@ I propose a Mann-Whitney U test to compare the difference in median apple drops 
 ggplot(data = apple,# setting up plot with apple data frame
        aes(x = apples, # set x axis
            fill = break_type)) + # fill by break type 
-  geom_bar(position = "dodge") + # prevent stacking of bars
+  geom_bar(position = "dodge", # prevent stacking of bars
+           color = "#1D0200") + # add outline
   scale_fill_manual( # setting custom colors
     values = c(
       "decay" = "darkolivegreen",
@@ -350,7 +355,9 @@ ggplot(data = apple,# setting up plot with apple data frame
   theme_minimal() + # change theme
   theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
   theme(text = element_text(family = "Times New Roman",
-                            size = 16)) # change font and size
+                            color = "#1D0200",
+                            size = 16)) + # change font,color and size
+  theme(axis.text = element_text(color = "#1D0200")) # match axis color to text color
   
 ```
 
@@ -360,13 +367,44 @@ Distributions for both variables are extremely similar in shape.
 
 ```{r}
 
-wilcox.test(
+wilcox.test( # run wilcox test to compare medians
   apples ~ break_type,
   data = apple
 )
-cliffs_delta(
+cliffs_delta( # run cliffs delta to find effect size
   apples ~ break_type,
   data = apple
 )
+
+```
+
+## d) Visualization
+
+```{r}
+
+ggplot(data = apple, # set up plot with apple data frame
+       aes(x = break_type, # set y and x axis
+           y = apples,
+           fill = break_type)) + # color by break type
+  geom_boxplot(varwidth = TRUE,# set width
+               linewidth = 1, # increase line width
+               linetype = "dashed",
+               color = "#1D0200") + # make lines dashed to see median better
+  coord_flip() + # flip boxplot horizontally
+  scale_fill_manual(values = c( # set custom colors
+    "decay" = "darkolivegreen",
+    "punch" = "tomato4"
+  )) +
+  labs(x = "Break Type", # set labels
+       y = "Apples Dropped Per Tree",
+       title = "No Difference in Median Apple Drops Per Tree",
+       fill = "Break Type") +  
+  theme_minimal() + # change theme
+  theme(legend.position = "none") + # remove legend
+  theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
+  theme(text = element_text(family = "Times New Roman",
+                            color = "#1D0200",
+                            size = 16)) + # change font, color, and size 
+  theme(axis.text = element_text(color = "#1D0200")) # match axis color to text color
 
 ```
