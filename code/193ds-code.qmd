@@ -293,11 +293,11 @@ ggplot(data = preds, # set up using predictions data frame
 
 ```
 
-## h) Caption for figure
+## h) Caption For Figure
 
 Figure 1. The figure above displays the predicted probability of a prairie dog colony site being selected for use by mountain plovers based on visual obstruction index using a linear regression model. The dark purple line is the predicted probability of selection from 0 to 1 and the pink overlay represents the 95% confidence interval. The green open circles are individual occupied sites and the brown open circles are individual unoccupied sites (the underlying data points have a binary discrete y value (0 and 1 representing unoccupied and occupied) and are underlayed to show difference in visual obstruction index between sites, any jittering around 1 or 0 values is purely for easier visualization). (data obtained from: Duchardt, Courtney J; Beck, Jeffrey L; Augustine, David J (2020). Mountain plover habitat selection and nest survival in relation to weather variability and spacial attributes of black tailed prairie dog disturbance)
 
-## i) Calculate model predictions
+## i) Calculate Model Predictions
 
 ```{r}
 
@@ -317,7 +317,7 @@ ft
 
 According to the model, the predicted probability of Mountain Plover nest site occupancy at 0 on the index of visual obstruction is 0.66
 
-## j) Interpret results
+## j) Interpret Results
 
 When there is no visual obstruction, the probability of nest site occupancy is 0.66. For each 1 index increase in visual obstruction, the probability of nest site occupancy decreases by 0.07 +/- 0.01 (linear model: F(1,274) = 46.42, p \< 0.001, $\alpha$ = 0.05, adjusted R\^2 = 0.14). There is not sufficient evidence to suggest any relationship between distance from prairie colony edge and probability of nest site occupancy (linear model: F(1,274) = 0.5227, p = 0.47, $\alpha$ = 0.05, adjusted R\^2 = -0.0017). The relationship between visual obscurity and Mountain Plover nest site occupancy could be explained by the necessity to avoid predation. When visual obscurity is high, it is difficult to see predators from a distance. Having the clearest view of your surroundings increases survivability, making sites with the best visibility more desirable for Mountain Plovers.
 
@@ -411,4 +411,8 @@ ggplot(data = apple, # set up plot with apple data frame
 
 ## e) Caption
 
-Figure 2 above compares the median apples dropped per tree between break types. The red boxplot represents trees that had their leaves broken by the player and the green boxplot represents trees with leaves that naturally decayed after log removal. The thicker dashed line is the median (0) and there is only one interquartile range (1) as it is not possible to have less than 0 apples.
+Figure 2. The figure above compares the median apples dropped per tree between break types. The red boxplot represents trees that had their leaves broken by the player and the green boxplot represents trees with leaves that naturally decayed after log removal. The thicker dashed line is the median (0) and there is only one quartile (1) as it is not possible to have less than 0 apples.
+
+## f) Results
+
+I found almost no difference (Cliff's $\delta$ = -0.01) in median apple drop rate between punched (n = 200) and decayed trees (n = 200) in Minecraft (Mann-Whitney U test, W = 19771, p-value = 0.80). Both trees had a median of 0, interquartile range of 1, upper quartile of 1, and a maximum of 2 apples drop.
