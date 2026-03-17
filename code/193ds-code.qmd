@@ -37,6 +37,11 @@ mopl <- read.csv(
        "MOPL_nest-site_selection_Duchardt_et_al._2019.csv")
 )
 
+apple <- read_xlsx(
+  here("data",
+       "apple.xlsx")
+)
+
 ```
 
 HTML Link: <https://valecarov.github.io/ENVS-193DS_winter_2026_final/code/193ds-code.html>
@@ -249,7 +254,7 @@ preds_dist <- ggpredict(model3,
 ggplot(data = preds, # set up using predictions data frame
        aes(x = x, # set x and y
            y = predicted)) +
-  coord_cartesian(ylim = c(0,1)) + # set y limits because values above 1 or below 0 do not make biological sense
+  coord_cartesian(ylim = c(0,1)) + # set y limits because values above 1 or below 0 do not make biological or mathematical sense
   geom_smooth(method = "lm",# add prediction line
               color = "deeppink4", # add custom color
               aes(x = x, # set x and y again 
@@ -273,9 +278,9 @@ ggplot(data = preds, # set up using predictions data frame
     labels = c("Unoccupied", "Occupied"),# change labels from 0 & 1 to unoccupied and occupied
     values = c("brown4","darkolivegreen" # set custom colors
   )) + 
-  labs(title = "Visual obstruction decreases plover nest selection",# add title
-       x = "Visual obstruction (cm)", # label x axis
-       y = "Predicted nest site occupancy") + # label y axis
+  labs(title = "Visual Obstruction Decreases Plover Nest Selection Probability",# add title
+       x = "Visual Obstruction Index", # label x axis
+       y = "Predicted Nest Site Occupancy Probability") + # label y axis
   theme_classic() + # change theme 
   theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
   theme(text = element_text(family = "Times New Roman",
@@ -285,13 +290,13 @@ ggplot(data = preds, # set up using predictions data frame
 
 ## h) Caption for figure
 
-Figure 1. The figure above displays the predicted probability of a prairie dog colony site being selected for use by mountain plovers based on a linear regression model. The dark purple line is the predicted probability of selection from 0 to 1 and the pink overlay represents the 95% confidence interval. The green open circles are individual used sites and the brown open circles are individual unused sites (these underlying data points are on a discrete y scale (used vs unused) and underlayed to visualize difference in visual obstruction between sites and are not represented by the predicted probability on the y axis). (data obtained from: Duchardt, Courtney J; Beck, Jeffrey L; Augustine, David J (2020). Mountain plover habitat selection and nest survival in relation to weather variability and spacial attributes of black tailed prairie dog disturbance)
+Figure 1. The figure above displays the predicted probability of a prairie dog colony site being selected for use by mountain plovers based on visual obstruction index using a linear regression model. The dark purple line is the predicted probability of selection from 0 to 1 and the pink overlay represents the 95% confidence interval. The green open circles are individual occupied sites and the brown open circles are individual unoccupied sites (the underlying data points have a binary discrete y value (0 and 1 representing unoccupied and occupied) and are underlayed to show difference in visual obstruction index between sites, any jittering around 1 or 0 values is purely for easier visualization). (data obtained from: Duchardt, Courtney J; Beck, Jeffrey L; Augustine, David J (2020). Mountain plover habitat selection and nest survival in relation to weather variability and spacial attributes of black tailed prairie dog disturbance)
 
 ## i) Calculate model predictions
 
 ```{r}
 
-ft <- flextable(as.data.frame(preds)) 
+ft <- flextable(as.data.frame(preds)) # create flextable
 
 ft <- colformat_double(ft, # round digits
                        digits = 2)
@@ -309,4 +314,51 @@ According to the model, the predicted probability of Mountain Plover nest site o
 
 ## j) Interpret results
 
-When there is no visual obstruction, the probability of nest site occupancy is 0.66. For each 1 cm increase in visual obstruction, the probability of nest site occupancy decreases by 0.07 +/- 0.01 (linear model: F(1,274) = 46.42, p \< 0.001, $\alpha$ = 0.05, adjusted R\^2 = 0.14). There is not sufficient evidence to suggest any relationship between distance from prairie colony edge and probability of nest site occupancy (linear model: F(1,274) = 0.5227, p = 0.47, $\alpha$ = 0.05, adjusted R\^2 = -0.0017). The relationship between visual obscurity and Mountain Plover nest site occupancy could be explained by the necessity to avoid predation. When visual obscurity is high, it is difficult to see predators from a distance. Having the clearest view of your surroundings increases survivability, making sites with the best visibility more desirable for Mountain Plovers.
+When there is no visual obstruction, the probability of nest site occupancy is 0.66. For each 1 index increase in visual obstruction, the probability of nest site occupancy decreases by 0.07 +/- 0.01 (linear model: F(1,274) = 46.42, p \< 0.001, $\alpha$ = 0.05, adjusted R\^2 = 0.14). There is not sufficient evidence to suggest any relationship between distance from prairie colony edge and probability of nest site occupancy (linear model: F(1,274) = 0.5227, p = 0.47, $\alpha$ = 0.05, adjusted R\^2 = -0.0017). The relationship between visual obscurity and Mountain Plover nest site occupancy could be explained by the necessity to avoid predation. When visual obscurity is high, it is difficult to see predators from a distance. Having the clearest view of your surroundings increases survivability, making sites with the best visibility more desirable for Mountain Plovers.
+
+# Problem 4
+
+## a) Comparing Visualizations
+
+Compared to my exploratory visualization, my affective visualization is much more visually interesting and would help a viewer understand the Minecraft apple drop rate much more than my initial visualization did. However, my exploratory visualization does a better job of showing how close the apple drop rates between leaf breaking methods were compared to my affective visualization, which was the purpose of my experiment. Both visualizations show apple drop rate, but my exploratory visualization focuses on the comparison of the precise drop rate per leaf block between methods, while my affective visualization focuses on the less precise drop rate per tree. The overall pattern of apple drop rates not changing based on leaf breaking method stayed the same regardless of how it was visualized.
+
+## b) Designing an Analysis
+
+I propose a Mann-Whitney U test to compare the difference in median apple drops between decayed and punched leaves. The predictor variable (break type) is a categorical variable, while the response (apple drops) is a discrete ordinal numerical variable.
+
+## c) Check Assumptions and Run Analysis
+
+### Assumptions:
+
+```{r}
+
+ggplot(data = apple,# setting up plot with apple data frame
+       aes(x = apples, # set x axis
+           fill = break_type)) + # fill by break type 
+  geom_bar(position = "dodge") + # prevent stacking of bars
+  scale_fill_manual( # setting custom colors
+    values = c(
+      "decay" = "darkolivegreen",
+      "punch" = "tomato4"
+    )
+  ) +
+  labs(x = "Apples", # setting labels
+       y = "Count",
+       title = "Similar Distributions Between Break Type",
+       fill = "Break Type") +
+  theme_minimal() + # change theme
+  theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
+  theme(text = element_text(family = "Times New Roman",
+                            size = 16)) # change font and size
+  
+```
+
+Distributions for both variables are extremely similar in shape.
+
+### Analysis:
+
+```{r}
+
+
+
+```
