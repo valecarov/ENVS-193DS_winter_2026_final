@@ -408,3 +408,7 @@ ggplot(data = apple, # set up plot with apple data frame
   theme(axis.text = element_text(color = "#1D0200")) # match axis color to text color
 
 ```
+
+## e) Caption
+
+Figure 2 above compares the median apples dropped per tree between break types. The red boxplot represents trees that had their leaves broken by the player and the green boxplot represents trees with leaves that naturally decayed after log removal. The thicker dashed line is the median (0) and there is only one interquartile range (1) as it is not possible to have less than 0 apples.
