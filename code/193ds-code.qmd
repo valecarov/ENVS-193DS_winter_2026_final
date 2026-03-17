@@ -25,6 +25,7 @@ library(MuMIn) # model selection
 library(lterdatasampler) # dataset from LTER
 library(extrafont) # adds more fonts
 library(showtext) # allow changing font
+library(flextable) # add flextable
 
 kelp <- read.csv(
   here("data",
@@ -237,6 +238,8 @@ plot(model2)
 
 preds <- ggpredict(model2,
                    terms = c("vo_nest"))
+preds_dist <- ggpredict(model3,
+                        terms = c("edgedist"))
 
 ```
 
@@ -266,13 +269,13 @@ ggplot(data = preds, # set up using predictions data frame
                   y = as.numeric(used_bin),# allow plotting of discrete variable over continuous predictions
                   color = used_bin)) +# color by used vs unused site
   scale_color_manual( 
-    name = "Actual Site Use",# name legend
-    labels = c("Unused", "Used"),# change labels from 0 & 1 to used and unused
+    name = "Actual Site Occupancy",# name legend
+    labels = c("Unoccupied", "Occupied"),# change labels from 0 & 1 to unoccupied and occupied
     values = c("brown4","darkolivegreen" # set custom colors
   )) + 
   labs(title = "Visual obstruction decreases plover nest selection",# add title
        x = "Visual obstruction (cm)", # label x axis
-       y = "Predicted plover site selection probability") + # label y axis
+       y = "Predicted nest site occupancy") + # label y axis
   theme_classic() + # change theme 
   theme(plot.title = element_text(hjust = 0.5)) + # move plot title to center
   theme(text = element_text(family = "Times New Roman",
@@ -282,4 +285,28 @@ ggplot(data = preds, # set up using predictions data frame
 
 ## h) Caption for figure
 
-Figure 1. The figure above displays the predicted probability of a prairie dog colony site being selected for use by mountain plovers based on a linear regression model. The dark purple line is the predicted probability of selection from 0 to 1 and the pink overlay represents the 95% confidence interval. The green open circles are individual used sites and the brown open circles are individual unused sites (these underlying data points are on a discrete y scale (used vs unused) and underlayed to visualize difference in visual obstruction between sites and are not represented by the predicted probability on the y axis)
+Figure 1. The figure above displays the predicted probability of a prairie dog colony site being selected for use by mountain plovers based on a linear regression model. The dark purple line is the predicted probability of selection from 0 to 1 and the pink overlay represents the 95% confidence interval. The green open circles are individual used sites and the brown open circles are individual unused sites (these underlying data points are on a discrete y scale (used vs unused) and underlayed to visualize difference in visual obstruction between sites and are not represented by the predicted probability on the y axis). (data obtained from: Duchardt, Courtney J; Beck, Jeffrey L; Augustine, David J (2020). Mountain plover habitat selection and nest survival in relation to weather variability and spacial attributes of black tailed prairie dog disturbance)
+
+## i) Calculate model predictions
+
+```{r}
+
+ft <- flextable(as.data.frame(preds)) 
+
+ft <- colformat_double(ft, # round digits
+                       digits = 2)
+ft <- autofit(ft) # autofit table
+
+```
+
+```{r}
+
+ft
+
+```
+
+According to the model, the predicted probability of Mountain Plover nest site occupancy at 0 on the index of visual obstruction is 0.66
+
+## j) Interpret results
+
+When there is no visual obstruction, the probability of nest site occupancy is 0.66. For each 1 cm increase in visual obstruction, the probability of nest site occupancy decreases by 0.07 +/- 0.01 (linear model: F(1,274) = 46.42, p \< 0.001, $\alpha$ = 0.05, adjusted R\^2 = 0.14). There is not sufficient evidence to suggest any relationship between distance from prairie colony edge and probability of nest site occupancy (linear model: F(1,274) = 0.5227, p = 0.47, $\alpha$ = 0.05, adjusted R\^2 = -0.0017). The relationship between visual obscurity and Mountain Plover nest site occupancy could be explained by the necessity to avoid predation. When visual obscurity is high, it is difficult to see predators from a distance. Having the clearest view of your surroundings increases survivability, making sites with the best visibility more desirable for Mountain Plovers.
