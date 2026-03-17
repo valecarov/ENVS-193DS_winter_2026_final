@@ -26,6 +26,7 @@ library(lterdatasampler) # dataset from LTER
 library(extrafont) # adds more fonts
 library(showtext) # allow changing font
 library(flextable) # add flextable
+library(effectsize) # calculating effect sizes
 
 kelp <- read.csv(
   here("data",
@@ -359,6 +360,13 @@ Distributions for both variables are extremely similar in shape.
 
 ```{r}
 
-
+wilcox.test(
+  apples ~ break_type,
+  data = apple
+)
+cliffs_delta(
+  apples ~ break_type,
+  data = apple
+)
 
 ```
