@@ -246,6 +246,7 @@ preds <- ggpredict(model2,
 ggplot(data = preds, # set up using predictions data frame
        aes(x = x, # set x and y
            y = predicted)) +
+  coord_cartesian(ylim = c(0,1)) + # set y limits because values above 1 or below 0 do not make biological sense
   geom_smooth(method = "lm",# add prediction line
               color = "deeppink4", # add custom color
               aes(x = x, # set x and y again 
@@ -255,15 +256,15 @@ ggplot(data = preds, # set up using predictions data frame
               aes(x = x, # add x and y
                   y = predicted, 
                   ymin = conf.low,# add lower interval
-                  ymax = conf.high)) + # add upper interval
+                  ymax = conf.high)) +# add upper interval
   geom_jitter(data = mopl_clean, # use original mopl_clean data frame for overlay
-              height = 0.2,# set narrow height
-              width = 0.2, # set narrow width
-              alpha = 0.5,# make transparent
+              height = 0.03,# set narrower height
+              width = 0, # do not jitter width
+              alpha = 0.7,# make transparent
               shape = 21,# change shape to open circles
               aes(x = vo_nest, # set x and y axis
                   y = as.numeric(used_bin),# allow plotting of discrete variable over continuous predictions
-                  color = used_bin)) + # color by used vs unused site
+                  color = used_bin)) +# color by used vs unused site
   scale_color_manual( 
     name = "Actual Site Use",# name legend
     labels = c("Unused", "Used"),# change labels from 0 & 1 to used and unused
@@ -278,3 +279,7 @@ ggplot(data = preds, # set up using predictions data frame
                             size = 16)) # change font and size
 
 ```
+
+## h) Caption for figure
+
+Figure 1. The figure above displays the predicted probability of a prairie dog colony site being selected for use by mountain plovers based on a linear regression model. The dark purple line is the predicted probability of selection from 0 to 1 and the pink overlay represents the 95% confidence interval. The green open circles are individual used sites and the brown open circles are individual unused sites (these underlying data points are on a discrete y scale (used vs unused) and underlayed to visualize difference in visual obstruction between sites and are not represented by the predicted probability on the y axis)
